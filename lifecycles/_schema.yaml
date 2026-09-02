@@ -1,0 +1,14 @@
+# Lifecycle manifest schema — every lifecycles/*.yaml conforms to this shape.
+# lifecycle-orchestrator loads one into se-project.yaml (`lifecycle`) and advances
+# `phase`. Each phase names the artifacts/skills it expects and its exit gate.
+
+id: string
+name: string
+description: string
+phases:
+  - id: string
+    name: string
+    expects: [string]   # artifact types / skill ids expected before the gate
+    gate: string        # exit gate id (optional)
+gates: [string]         # ordered gate ids
+references: [string]

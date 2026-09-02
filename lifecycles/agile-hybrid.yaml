@@ -1,0 +1,25 @@
+id: agile-hybrid
+name: Agile / Hybrid SE
+description: >
+  Up-front architecture runway, then time-boxed increments delivering working
+  capability; SE rigor (traceability, V&V) applied continuously.
+phases:
+  - id: inception
+    name: Inception
+    expects: [mission-analysis, requirements-engineering]
+  - id: architecture-runway
+    name: Architecture Runway
+    expects: [mbse-modeling, architecture-model]
+    gate: ArchReview
+  - id: iterations
+    name: Iterations
+    expects: [requirements-engineering, mbse-modeling, verification-validation]
+  - id: release
+    name: Release
+    expects: [config-management, release-notes]
+    gate: ReleaseReview
+  - id: operations
+    name: Operations
+    expects: [operations-sustainment]
+gates: [ArchReview, ReleaseReview]
+references: ["INCOSE Agile SE"]

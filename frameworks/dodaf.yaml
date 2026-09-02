@@ -1,0 +1,55 @@
+id: dodaf
+name: Department of Defense Architecture Framework
+version: "2.02"
+description: >
+  DoDAF viewpoints. A working subset of the Operational, Systems, Capability,
+  and Standards views; extend with additional DoDAF-described models as needed.
+
+viewpoints:
+  - id: AV-1
+    name: Overview and Summary Information
+    intent: context
+    required: true
+    description: Scope, purpose, context, and assumptions of the architecture.
+  - id: OV-1
+    name: High-Level Operational Concept Graphic
+    intent: context
+    required: true
+    description: The operational concept — actors, missions, and interactions.
+  - id: OV-2
+    name: Operational Resource Flow Description
+    intent: behavior
+    required: true
+    description: Operational nodes and the resource flows between them.
+  - id: OV-5b
+    name: Operational Activity Model
+    intent: behavior
+    required: false
+    description: Operational activities, inputs/outputs, and control flow.
+  - id: SV-1
+    name: Systems Interface Description
+    intent: structure
+    required: true
+    description: Systems, subsystems, and their interfaces.
+  - id: SV-2
+    name: Systems Resource Flow Description
+    intent: deployment
+    required: false
+    description: System resource flows over communication paths.
+  - id: CV-2
+    name: Capability Taxonomy
+    intent: structure
+    required: false
+    description: Hierarchy of capabilities the architecture supports.
+  - id: StdV-1
+    name: Standards Profile
+    intent: structure
+    required: false
+    description: Technical standards that apply to the architecture.
+
+notation_defaults: [plantuml, mermaid, sysmlv1]
+
+gates: [SRR, SFR, PDR, CDR]
+references:
+  - "DoD Architecture Framework (DoDAF) 2.02"
+  - "https://dodcio.defense.gov/library/dod-architecture-framework/"

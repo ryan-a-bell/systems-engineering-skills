@@ -1,0 +1,21 @@
+id: incremental
+name: Incremental
+description: Capability delivered in planned increments, each fully engineered and integrated.
+phases:
+  - id: increment-planning
+    name: Increment Planning
+    expects: [project-management, requirements-engineering]
+    gate: IncrementSRR
+  - id: increment-build
+    name: Increment Build
+    expects: [mbse-modeling, config-management]
+    gate: IncrementCDR
+  - id: increment-verify
+    name: Increment Verify
+    expects: [verification-validation]
+    gate: IncrementSVR
+  - id: integrate
+    name: Integrate into Baseline
+    expects: [config-management, baseline-snapshot]
+gates: [IncrementSRR, IncrementCDR, IncrementSVR]
+references: ["ISO/IEC/IEEE 15288"]

@@ -1,0 +1,43 @@
+# Diagram-backends registry — the diagramming extension point.
+#
+# `diagram-toolkit` selects a backend to render a requested (intent x notation)
+# from the shared model. Each backend declares the notations and intents it can
+# render — together these form the capability matrix. A backend that accepts the
+# shared architecture model and returns the declared output type is interchangeable
+# with the built-in one, so third-party diagram skills (e.g. drawio-skill) drop in
+# here without changing any capability skill.
+#
+# provider kinds:
+#   builtin        -> the diagram-generation skill in this repo
+#   external-skill -> a separately installed Claude Code skill (resolved by name)
+#   mcp-tool       -> a tool exposed by a connected MCP server
+
+version: 1
+default: diagram-generation
+
+backends:
+  diagram-generation:
+    provider: builtin
+    notations: [mermaid, plantuml, sysmlv1, sysmlv2, excalidraw, html]
+    intents:   [context, structure, behavior, requirements, c4, deployment, trace-map]
+    features:  [text-as-code, version-controllable, syntax-validate]
+
+  drawio-skill:
+    provider: external-skill
+    skill: drawio-skill            # https://github.com/Agents365-ai/drawio-skill
+    notations: [drawio]
+    intents:   [context, structure, deployment, c4]
+    features:  [render-and-verify, multi-page-c4-drilldown, 10k-shape-library]
+
+# --- Example additional backends ---
+#  mermaid-live:
+#    provider: mcp-tool
+#    server: mermaid
+#    tool: render
+#    notations: [mermaid]
+#    intents: [context, structure, behavior]
+
+# When a chosen notation cannot express a requested intent, resolve per this rule.
+fallback:
+  strategy: nearest-notation      # or: note-and-degrade
+  note_when_degraded: true

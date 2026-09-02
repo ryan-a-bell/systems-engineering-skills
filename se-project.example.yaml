@@ -1,0 +1,27 @@
+# se-project.yaml — per-project state and digital thread (TEMPLATE)
+#
+# Copy this to `se-project.yaml` in your working project (or run
+# `/framework-manager select <framework>`, which creates and maintains it).
+# Every skill reads this file first to learn the active context, and writes its
+# artifacts and trace links back into it.
+
+# --- Active context (written by framework-manager & lifecycle-orchestrator) ---
+framework: null            # uaf | dodaf | c4 | <custom id from frameworks/>
+lifecycle: null            # vee | spiral | agile-hybrid | waterfall | incremental | sustainment
+phase: null                # current lifecycle phase (orchestrator advances this)
+diagram:
+  default_notation: mermaid  # used when a diagram request omits a notation
+
+# --- Digital thread: one shared model (IR) all skills read/write ---
+model:
+  elements: []             # nodes: systems, functions, components, actors, ...
+  relations: []            # edges: composition, flow, allocation, ...
+
+trace:
+  links: []                # typed, bidirectional: need -> req -> function -> component -> verification
+
+# --- Produced artifacts (index; large artifacts live in artifacts/) ---
+artifacts: []
+
+# --- Lifecycle gate status (written by lifecycle-orchestrator) ---
+gates: {}                  # e.g. { SRR: passed, PDR: pending }

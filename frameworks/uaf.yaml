@@ -1,0 +1,55 @@
+id: uaf
+name: Unified Architecture Framework
+version: "1.2"
+description: >
+  OMG UAF grid of viewpoints for enterprise and system-of-systems architecture.
+  A subset of the domains is enabled by default; add rows as the model matures.
+
+viewpoints:
+  - id: strategic
+    name: Strategic (St)
+    intent: structure
+    required: false
+    description: Capabilities, phasing, and enterprise goals.
+  - id: operational
+    name: Operational (Op)
+    intent: behavior
+    required: true
+    description: Operational activities, nodes, and their exchanges.
+  - id: services
+    name: Services (Sv)
+    intent: structure
+    required: false
+    description: Service specifications and their interfaces.
+  - id: resources
+    name: Resources (Rs)
+    intent: structure
+    required: true
+    description: Resource (system) structure and connectivity.
+  - id: personnel
+    name: Personnel (Pr)
+    intent: structure
+    required: false
+    description: Organizations, posts, and human roles.
+  - id: security
+    name: Security (Sc)
+    intent: structure
+    required: false
+    description: Security controls, assets, and constraints.
+  - id: projects
+    name: Projects (Pj)
+    intent: structure
+    required: false
+    description: Projects delivering capability increments.
+  - id: standards
+    name: Standards (Sd)
+    intent: structure
+    required: false
+    description: Technical and operational standards in force.
+
+notation_defaults: [sysmlv2, plantuml, mermaid]
+
+gates: [SRR, SFR, PDR, CDR]
+references:
+  - "OMG Unified Architecture Framework (UAF) 1.2"
+  - "https://www.omg.org/uaf/"
