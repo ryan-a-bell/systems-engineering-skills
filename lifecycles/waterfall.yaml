@@ -1,0 +1,25 @@
+id: waterfall
+name: Waterfall
+description: Sequential phases with a review at each hand-off; little back-tracking.
+phases:
+  - id: requirements
+    name: Requirements
+    expects: [requirements-engineering, requirements-set]
+    gate: SRR
+  - id: design
+    name: Design
+    expects: [mbse-modeling, architecture-model]
+    gate: PDR
+  - id: implementation
+    name: Implementation
+    expects: [config-management, baseline-snapshot]
+    gate: CDR
+  - id: verification
+    name: Verification
+    expects: [verification-validation, verification-matrix]
+    gate: SVR
+  - id: maintenance
+    name: Maintenance
+    expects: [operations-sustainment, sustainment-plan]
+gates: [SRR, PDR, CDR, SVR]
+references: ["ISO/IEC/IEEE 15288"]

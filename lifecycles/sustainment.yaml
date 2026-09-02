@@ -1,0 +1,19 @@
+id: sustainment
+name: Sustainment
+description: Post-deployment operations, monitoring, obsolescence management, and disposal.
+phases:
+  - id: operations
+    name: Operations
+    expects: [operations-sustainment, human-system-integration]
+  - id: monitoring
+    name: Monitoring & Support
+    expects: [ram-analysis, risk-management]
+  - id: obsolescence
+    name: Obsolescence & EOL
+    expects: [operations-sustainment]
+    gate: EOLReview
+  - id: disposal
+    name: Retirement & Disposal
+    expects: [operations-sustainment]
+gates: [EOLReview]
+references: ["ISO/IEC/IEEE 15288 (Operation, Maintenance, Disposal processes)"]

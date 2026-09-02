@@ -1,0 +1,44 @@
+id: vee
+name: Vee Model
+description: >
+  Classic systems-engineering Vee. Decomposition and definition down the left leg,
+  integration and verification up the right, meeting the user need at the top.
+phases:
+  - id: concept
+    name: Concept & Needs
+    expects: [mission-analysis, conops, moe-mop, capability-gap]
+    gate: SRR
+  - id: requirements
+    name: Requirements
+    expects: [requirements-engineering, requirements-set, requirements-quality-report]
+    gate: SFR
+  - id: architecture
+    name: Architecture
+    expects: [mbse-modeling, architecture-model, trade-study]
+    gate: PDR
+  - id: design
+    name: Detailed Design
+    expects: [mbse-modeling, ram-analysis, safety-analysis, cybersecurity, interface-register]
+    gate: CDR
+  - id: implementation
+    name: Implementation
+    expects: [config-management, baseline-snapshot]
+    gate: TRR
+  - id: integration
+    name: Integration
+    expects: [verification-validation, integration-sequence]
+  - id: verification
+    name: Verification
+    expects: [verification-validation, verification-matrix, evidence-index]
+    gate: SVR
+  - id: validation
+    name: Validation
+    expects: [verification-validation, validation-scenarios]
+  - id: transition
+    name: Transition
+    expects: [operations-sustainment, transition-readiness-report]
+  - id: operations
+    name: Operations & Support
+    expects: [operations-sustainment, sustainment-plan]
+gates: [SRR, SFR, PDR, CDR, TRR, SVR]
+references: ["INCOSE Systems Engineering Handbook", "ISO/IEC/IEEE 15288"]

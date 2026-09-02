@@ -1,0 +1,48 @@
+# Compute registry — the calculation extension point.
+#
+# Capability skills (ram-analysis, project-management, risk-management, trade-study,
+# mbse-modeling, ...) never call a calculator directly. They request a CAPABILITY
+# by name and this registry resolves it to a provider. Swap a provider here without
+# touching any skill.
+#
+# provider kinds:
+#   builtin        -> a module under lib/ in this repo
+#   external-skill -> a separately installed Claude Code skill (resolved by name)
+#   mcp-tool       -> a tool exposed by a connected MCP server
+
+version: 1
+
+providers:
+  reliability:
+    provider: builtin
+    module: lib/reliability.py
+    used_by: [ram-analysis]
+  evm:
+    provider: builtin
+    module: lib/evm.py
+    used_by: [project-management]
+  swap_budget:
+    provider: builtin
+    module: lib/swap_budget.py
+    used_by: [project-management, mbse-modeling]
+  monte_carlo:
+    provider: builtin
+    module: lib/monte_carlo.py
+    used_by: [risk-management, trade-study]
+
+# --- Example plug-ins (install the skill/tool separately, then uncomment) ---
+#  fea:
+#    provider: external-skill
+#    skill: fea-solver
+#    used_by: [mbse-modeling]
+#  cost_model:
+#    provider: mcp-tool
+#    server: costing
+#    tool: estimate
+#    used_by: [project-management]
+
+# How a skill selects: match the requested capability id; if absent, fall back to
+# an inline estimate and flag it as unverified.
+fallback:
+  strategy: inline-estimate
+  flag_unverified: true

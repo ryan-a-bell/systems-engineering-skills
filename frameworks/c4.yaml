@@ -1,0 +1,34 @@
+id: c4
+name: C4 Model
+version: "1.0"
+description: >
+  Simon Brown's C4 model for visualizing software architecture as a hierarchy
+  of four viewpoints, each zooming into the previous. Lightweight and code-oriented.
+
+viewpoints:
+  - id: context
+    name: Level 1 — System Context
+    intent: context
+    required: true
+    description: The system in scope, its users, and external systems.
+  - id: container
+    name: Level 2 — Container
+    intent: structure
+    required: true
+    description: Deployable/runnable units (apps, services, data stores) and their interactions.
+  - id: component
+    name: Level 3 — Component
+    intent: structure
+    required: false
+    description: Components inside a container and their responsibilities.
+  - id: code
+    name: Level 4 — Code
+    intent: structure
+    required: false
+    description: Class/code-level detail (use sparingly; often generated).
+
+notation_defaults: [mermaid, plantuml, drawio]
+
+gates: []
+references:
+  - "The C4 model for visualising software architecture — https://c4model.com"

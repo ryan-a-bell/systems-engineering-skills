@@ -1,0 +1,22 @@
+id: spiral
+name: Spiral
+description: >
+  Risk-driven iterations. Each loop: set objectives, identify and resolve risks,
+  develop and verify, then plan the next loop.
+phases:
+  - id: objectives
+    name: Determine Objectives & Constraints
+    expects: [mission-analysis, requirements-engineering]
+  - id: risk
+    name: Identify & Resolve Risks
+    expects: [risk-management, trade-study]
+    gate: RiskReview
+  - id: develop
+    name: Develop & Verify
+    expects: [mbse-modeling, verification-validation]
+  - id: plan-next
+    name: Plan Next Iteration
+    expects: [project-management]
+    gate: IterationReview
+gates: [RiskReview, IterationReview]
+references: ["Boehm, A Spiral Model of Software Development and Enhancement"]

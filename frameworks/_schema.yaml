@@ -1,0 +1,25 @@
+# Framework manifest schema
+#
+# Every frameworks/*.yaml conforms to this shape. A framework is DATA: it names
+# the viewpoints an architecture must provide, maps each viewpoint to a
+# diagram-generation `intent`, and lists preferred notations. `framework-manager`
+# loads one of these into se-project.yaml and validates a model against it.
+
+id: string                 # short id, e.g. "uaf" — matches the filename stem
+name: string
+version: string
+description: string
+
+viewpoints:                # the views this framework defines
+  - id: string             # framework-native id, e.g. "OV-1" or "operational"
+    name: string
+    intent: string         # diagram-generation intent: context | structure | behavior
+                           #   | requirements | c4 | deployment | trace-map
+    required: boolean      # counts toward conformance completeness
+    description: string
+
+notation_defaults:         # preferred notations, best first
+  - string                 # mermaid | plantuml | sysmlv1 | sysmlv2 | excalidraw | html | drawio
+
+gates: [string]            # optional lifecycle phase-gates this framework expects
+references: [string]       # standards / source URLs
