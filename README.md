@@ -1,6 +1,6 @@
 # Systems Engineering Skills
 
-[[sys-eng-skills-banner.png]]
+![Systems Engineering Skills banner](sys-eng-skills-banner.png)
 
 **An agent framework for systems engineering.** Select an architecture framework
 (UAF, DoDAF, C4, or your own) and a lifecycle, and a set of Claude Code skills walks
