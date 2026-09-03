@@ -13,15 +13,15 @@ The spine is **select → store → operate → visualize**, with plug-ins on th
 
 ```mermaid
 flowchart TB
-    U([Systems Engineer]) -->|/framework-manager| F[Select framework<br/>UAF · DoDAF · C4]
-    U -->|/lifecycle-orchestrator| L[Select lifecycle<br/>Vee · Spiral · Agile]
-    F --> S[(se-project.yaml<br/>remembers framework, lifecycle,<br/>phase, default notation)]
+    U(["Systems Engineer"]) -->|/framework-manager| F["Select framework<br/>UAF · DoDAF · C4"]
+    U -->|/lifecycle-orchestrator| L["Select lifecycle<br/>Vee · Spiral · Agile"]
+    F --> S[("se-project.yaml<br/>remembers framework, lifecycle,<br/>phase, default notation")]
     L --> S
-    S -->|every skill reads this first| C[Core SE skills<br/>requirements · MBSE · V&V · risk ·<br/>trade · safety · … 13 total]
-    C -->|write artifacts + trace links| T[(Digital thread<br/>one shared model + traceability)]
-    T --> D[Diagramming<br/>project the model into any view]
-    D --> O[/Mermaid · PlantUML · SysML · C4 · draw.io/]
-    PL[[Plug-in skills<br/>compute + diagram backends]] -. extend .-> C
+    S -->|every skill reads this first| C["Core SE skills<br/>requirements · MBSE · V&V · risk ·<br/>trade · safety · … 13 total"]
+    C -->|write artifacts + trace links| T[("Digital thread<br/>one shared model + traceability")]
+    T --> D["Diagramming<br/>project the model into any view"]
+    D --> O[/"Mermaid · PlantUML · SysML · C4 · draw.io"/]
+    PL[["Plug-in skills<br/>compute + diagram backends"]] -. extend .-> C
     PL -. extend .-> D
     classDef state fill:#FDECC8,stroke:#B45309;
     classDef plug fill:#E0E7FF,stroke:#4338CA;
@@ -41,65 +41,65 @@ Every file in the repo and how they relate:
 ```mermaid
 flowchart TB
   subgraph REPO["systems-engineering-skills/ (repo)"]
-    README[README.md]
-    STATE[(se-project.yaml<br/>framework · lifecycle · phase<br/>model IR + trace)]
+    README["README.md"]
+    STATE[("se-project.yaml<br/>framework · lifecycle · phase<br/>model IR + trace")]
     subgraph META["meta (4)"]
-      FM[framework-manager]
-      LO[lifecycle-orchestrator]
-      SR[skill-router]
-      DT[digital-thread]
+      FM["framework-manager"]
+      LO["lifecycle-orchestrator"]
+      SR["skill-router"]
+      DT["digital-thread"]
     end
     subgraph CORE["core (13)"]
-      RE[requirements-engineering]
-      MA[mission-analysis]
-      MBSE[mbse-modeling]
-      VV[verification-validation]
-      TS[trade-study]
-      RISK[risk-management]
-      SAF[safety-analysis]
-      CYB[cybersecurity]
-      CM[config-management]
-      OPS[operations-sustainment]
-      PM[project-management]
-      HSI[human-system-integration]
-      RAM[ram-analysis]
+      RE["requirements-engineering"]
+      MA["mission-analysis"]
+      MBSE["mbse-modeling"]
+      VV["verification-validation"]
+      TS["trade-study"]
+      RISK["risk-management"]
+      SAF["safety-analysis"]
+      CYB["cybersecurity"]
+      CM["config-management"]
+      OPS["operations-sustainment"]
+      PM["project-management"]
+      HSI["human-system-integration"]
+      RAM["ram-analysis"]
     end
     subgraph DIAG["diagramming (2)"]
-      DG[diagram-generation]
-      DTK[diagram-toolkit]
+      DG["diagram-generation"]
+      DTK["diagram-toolkit"]
     end
     subgraph FW["frameworks/"]
-      UAF[uaf.yaml]
-      DODAF[dodaf.yaml]
-      C4[c4.yaml]
-      FWSCHEMA[_schema.yaml]
+      UAF["uaf.yaml"]
+      DODAF["dodaf.yaml"]
+      C4["c4.yaml"]
+      FWSCHEMA["_schema.yaml"]
     end
     subgraph REG["registry/ — extension points"]
-      RCOMP[compute.yaml]
-      RDIAG[diagram-backends.yaml]
+      RCOMP["compute.yaml"]
+      RDIAG["diagram-backends.yaml"]
     end
     subgraph LIB["lib/ — built-in compute"]
-      RELPY[reliability.py]
-      EVMPY[evm.py]
-      MCPY[monte_carlo.py]
-      SWAPPY[swap_budget.py]
+      RELPY["reliability.py"]
+      EVMPY["evm.py"]
+      MCPY["monte_carlo.py"]
+      SWAPPY["swap_budget.py"]
     end
   end
   subgraph EXT["External plugins (installed separately)"]
-    DRAWIO[drawio-skill]
-    OTHERD[excalidraw / mermaid / plantuml-server]
-    EXTCALC[3rd-party calc skills]
-    MCP[MCP tools / services]
+    DRAWIO["drawio-skill"]
+    OTHERD["excalidraw / mermaid / plantuml-server"]
+    EXTCALC["3rd-party calc skills"]
+    MCP["MCP tools / services"]
   end
 
   FM --> UAF & DODAF & C4
   UAF -.conforms.-> FWSCHEMA
   FM -->|writes framework, notation| STATE
   LO -->|writes phase, gates| STATE
-  DT -->|owns model + trace| STATE
+  DT -->|"owns model + trace"| STATE
   SR -.routes intent.-> RE
   SR -.routes intent.-> DG
-  RE -->|read state / write artifacts| STATE
+  RE -->|"read state / write artifacts"| STATE
   RAM -.needs calc.-> RCOMP
   PM -.needs calc.-> RCOMP
   RISK -.needs calc.-> RCOMP
@@ -108,7 +108,7 @@ flowchart TB
   RCOMP ==> EXTCALC
   RCOMP ==> MCP
   DG -->|reads model| DT
-  DG -->|view → active viewpoints| FW
+  DG -->|"view → active viewpoints"| FW
   DTK -.select backend.-> RDIAG
   RDIAG ==> DG
   RDIAG ==> DRAWIO
