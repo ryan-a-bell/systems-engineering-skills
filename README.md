@@ -1,5 +1,7 @@
 # Systems Engineering Skills
 
+[[sys-eng-skills-banner.png]]
+
 **An agent framework for systems engineering.** Select an architecture framework
 (UAF, DoDAF, C4, or your own) and a lifecycle, and a set of Claude Code skills walks
 you through the work — requirements, MBSE, V&V, risk, trade studies, safety, and more —
