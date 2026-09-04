@@ -185,10 +185,3 @@ Both extension points are registry files — add a row, no core change:
 4. Work the phases: `/mission-analysis`, `/requirements-engineering`, `/mbse-modeling`, …
 5. `/diagram-generation` — projects the model into the active framework's views;
    pass `intent`/`notation` for a one-off view (e.g. `intent=c4 notation=mermaid`).
-
-## Provenance
-
-Consolidates two earlier iterations: v1's
-lifecycle-phase organization and v2's contract-first rigor, collapsing v2's
-parameter-axis skill explosion (34 diagram skills → 1 `diagram-generation`) into
-capability skills with modes.
